@@ -1,5 +1,5 @@
 import gzip
-from path1.demo_reader.util import writer
+from ..util import writer
 
 opener = gzip.open
 

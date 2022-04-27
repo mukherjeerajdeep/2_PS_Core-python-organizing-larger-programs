@@ -73,6 +73,7 @@ __init__.py is called for the import!
 03>
 03>python -m demo_reader.compressed.gzipped test.gz data compressed with gzip 
 __init__.py is called for the import!
+```
 
 `python` - the interpreter
 `-m` - run the module
@@ -80,7 +81,6 @@ __init__.py is called for the import!
 `test.bz2 `- the sys.argv[1] passed for the file name to be created
 `data compressed with bz2 `- the sys.argv[2] sys.argv[5]  
 
-```
 
 ## This works in pycharm python terminal
 

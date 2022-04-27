@@ -1,4 +1,5 @@
-from demo_reader.compressed.bzipped import opener as bz2_opener
-from demo_reader.compressed.gzipped import opener as gzip_opener
-
-__all__ = ['bz2_opener', 'gzip_opener']
+#  Copyright (c) 2022. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+#  Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+#  Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+#  Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+#  Vestibulum commodo. Ut rhoncus gravida arcu.
