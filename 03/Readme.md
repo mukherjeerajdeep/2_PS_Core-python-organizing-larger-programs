@@ -99,3 +99,179 @@ __init__.py is called for the import!
 >>> 
 
 ```
+## Relative import 
+
+we extract the common parts of the bzipped and gzipped 
+to a common writer module and import that as relatively from 
+the current package/module. Each dot `.` is one package level
+up from the current module package. 
+```python
+import gzip
+from ..util import writer
+```
+
+## Dunder `__all__` will limit the scope of the visible python methods
+
+using the dunder `__all__` we can limit the package visibility to public.
+the local() is used to check the degree of exposure when importing a package.
+
+```python
+pprint(locals())
+{'In': ['',
+        "print('PyDev console: using IPython 8.1.1\\n')\n"
+        '\n'
+        "import sys; print('Python %s on %s' % (sys.version, sys.platform))\n"
+        "sys.path.extend(['C:\\\\Rajdeep_Mukherjee\\\\PluralSight_Python\\\\2_PS_Core-python-organizing-larger-programs\\\\03', "
+        "'C:/Rajdeep_Mukherjee/PluralSight_Python/2_PS_Core-python-organizing-larger-programs/03'])",
+        'from pprint import pprint',
+        'pprint(local())',
+        'pprint(locals())'],
+ 'Out': {},
+ '_': '',
+ '__': '',
+ '___': '',
+ '__builtin__': <module 'builtins' (built-in)>,
+ '__builtins__': <module 'builtins' (built-in)>,
+ '__doc__': 'Automatically created module for IPython interactive environment',
+ '__loader__': None,
+ '__name__': '__main__',
+ '__package__': None,
+ '__spec__': None,
+ '_dh': [WindowsPath('C:/Rajdeep_Mukherjee/PluralSight_Python/2_PS_Core-python-organizing-larger-programs/03')],
+ '_i': 'pprint(local())',
+ '_i1': "print('PyDev console: using IPython 8.1.1\\n')\n"
+        '\n'
+        "import sys; print('Python %s on %s' % (sys.version, sys.platform))\n"
+        "sys.path.extend(['C:\\\\Rajdeep_Mukherjee\\\\PluralSight_Python\\\\2_PS_Core-python-organizing-larger-programs\\\\03', "
+        "'C:/Rajdeep_Mukherjee/PluralSight_Python/2_PS_Core-python-organizing-larger-programs/03'])",
+ '_i2': 'from pprint import pprint',
+ '_i3': 'pprint(local())',
+ '_i4': 'pprint(locals())',
+ '_ih': ['',
+         "print('PyDev console: using IPython 8.1.1\\n')\n"
+         '\n'
+         "import sys; print('Python %s on %s' % (sys.version, sys.platform))\n"
+         "sys.path.extend(['C:\\\\Rajdeep_Mukherjee\\\\PluralSight_Python\\\\2_PS_Core-python-organizing-larger-programs\\\\03', "
+         "'C:/Rajdeep_Mukherjee/PluralSight_Python/2_PS_Core-python-organizing-larger-programs/03'])",
+         'from pprint import pprint',
+         'pprint(local())',
+         'pprint(locals())'],
+ '_ii': 'from pprint import pprint',
+ '_iii': "print('PyDev console: using IPython 8.1.1\\n')\n"
+         '\n'
+         "import sys; print('Python %s on %s' % (sys.version, sys.platform))\n"
+         "sys.path.extend(['C:\\\\Rajdeep_Mukherjee\\\\PluralSight_Python\\\\2_PS_Core-python-organizing-larger-programs\\\\03', "
+         "'C:/Rajdeep_Mukherjee/PluralSight_Python/2_PS_Core-python-organizing-larger-programs/03'])",
+ '_oh': {},
+ 'exit': <IPython.core.autocall.ExitAutocall object at 0x000001C2E3A39390>,
+ 'get_ipython': <bound method InteractiveShell.get_ipython of <_pydev_bundle.pydev_ipython_console_011.PyDevTerminalInteractiveShell object at 0x000001C2E3A3A3B0>>,
+ 'pprint': <function pprint at 0x000001C2E2A10160>,
+ 'quit': <IPython.core.autocall.ExitAutocall object at 0x000001C2E3A39390>,
+ 'sys': <module 'sys' (built-in)>}
+```
+After the import of the `demo_reader`, here we see both bzipped/gzipped are exposed whereas we
+want only to expose the methods/functions inside it not the whole module/package. In this case
+`__all__` helps us. 
+
+```python
+from demo_reader.compressed import * 
+__init__.py is called for the import!
+pprint(locals())
+{'In': ['',
+        "print('PyDev console: using IPython 8.1.1\\n')\n"
+        '\n'
+        "import sys; print('Python %s on %s' % (sys.version, sys.platform))\n"
+        "sys.path.extend(['C:\\\\Rajdeep_Mukherjee\\\\PluralSight_Python\\\\2_PS_Core-python-organizing-larger-programs\\\\03', "
+        "'C:/Rajdeep_Mukherjee/PluralSight_Python/2_PS_Core-python-organizing-larger-programs/03'])",
+        'from pprint import pprint',
+        'pprint(local())',
+        'pprint(locals())',
+        'from demo_reader.compressed import * ',
+        'pprint(locals())'],
+ 'Out': {},
+ '_': '',
+ '__': '',
+ '___': '',
+ '__builtin__': <module 'builtins' (built-in)>,
+ '__builtins__': <module 'builtins' (built-in)>,
+ '__doc__': 'Automatically created module for IPython interactive environment',
+ '__loader__': None,
+ '__name__': '__main__',
+ '__package__': None,
+ '__spec__': None,
+ '_dh': [WindowsPath('C:/Rajdeep_Mukherjee/PluralSight_Python/2_PS_Core-python-organizing-larger-programs/03')],
+ '_i': 'from demo_reader.compressed import * ',
+ '_i1': "print('PyDev console: using IPython 8.1.1\\n')\n"
+        '\n'
+        "import sys; print('Python %s on %s' % (sys.version, sys.platform))\n"
+        "sys.path.extend(['C:\\\\Rajdeep_Mukherjee\\\\PluralSight_Python\\\\2_PS_Core-python-organizing-larger-programs\\\\03', "
+        "'C:/Rajdeep_Mukherjee/PluralSight_Python/2_PS_Core-python-organizing-larger-programs/03'])",
+ '_i2': 'from pprint import pprint',
+ '_i3': 'pprint(local())',
+ '_i4': 'pprint(locals())',
+ '_i5': 'from demo_reader.compressed import * ',
+ '_i6': 'pprint(locals())',
+ '_ih': ['',
+         "print('PyDev console: using IPython 8.1.1\\n')\n"
+         '\n'
+         "import sys; print('Python %s on %s' % (sys.version, sys.platform))\n"
+         "sys.path.extend(['C:\\\\Rajdeep_Mukherjee\\\\PluralSight_Python\\\\2_PS_Core-python-organizing-larger-programs\\\\03', "
+         "'C:/Rajdeep_Mukherjee/PluralSight_Python/2_PS_Core-python-organizing-larger-programs/03'])",
+         'from pprint import pprint',
+         'pprint(local())',
+         'pprint(locals())',
+         'from demo_reader.compressed import * ',
+         'pprint(locals())'],
+ '_ii': 'pprint(locals())',
+ '_iii': 'pprint(local())',
+ '_oh': {},
+ 'bz2_opener': <function open at 0x000001C2E05624D0>,
+ 'bzipped': <module 'demo_reader.compressed.bzipped' from 'C:\\Rajdeep_Mukherjee\\PluralSight_Python\\2_PS_Core-python-organizing-larger-programs\\03\\demo_reader\\compressed\\bzipped.py'>,`
+ 'exit': <IPython.core.autocall.ExitAutocall object at 0x000001C2E3A39390>,
+ 'get_ipython': <bound method InteractiveShell.get_ipython of <_pydev_bundle.pydev_ipython_console_011.PyDevTerminalInteractiveShell object at 0x000001C2E3A3A3B0>>,
+ 'gzip_opener': <function open at 0x000001C2E2746710>,
+ 'gzipped': <module 'demo_reader.compressed.gzipped' from 'C:\\Rajdeep_Mukherjee\\PluralSight_Python\\2_PS_Core-python-organizing-larger-programs\\03\\demo_reader\\compressed\\gzipped.py'>,`
+ 'pprint': <function pprint at 0x000001C2E2A10160>,
+ 'quit': <IPython.core.autocall.ExitAutocall object at 0x000001C2E3A39390>,
+ 'sys': <module 'sys' (built-in)>}
+
+```
+Here we can see that only the methods/functions are exposed locally. 
+ `'bz2_opener': <function open at 0x000001B75CFE8B80>,
+ 'gzip_opener': <function open at 0x000001B75CFEA290>,`
+
+```python
+Python 3.10.2 (tags/v3.10.2:a58ebcc, Jan 17 2022, 14:12:15) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+>>> 
+>>> from pprint import pprint
+>>> pprint(locals()) 
+{'__annotations__': {},
+ '__builtins__': <module 'builtins' (built-in)>,
+ '__doc__': None,
+ '__loader__': <class '_frozen_importlib.BuiltinImporter'>,
+ '__name__': '__main__',
+ '__package__': None,
+ '__spec__': None,
+ 'pprint': <function pprint at 0x000001B75CB1A560>}
+>>>
+>>> 
+>>> from demo_reader.compressed import *  
+__init__.py is called for the import!
+>>> 
+>>> 
+>>> pprint(locals())                      
+{'__annotations__': {},
+ '__builtins__': <module 'builtins' (built-in)>,
+ '__doc__': None,
+ '__loader__': <class '_frozen_importlib.BuiltinImporter'>,
+ '__name__': '__main__',
+ '__package__': None,
+ '__spec__': None,
+ 'bz2_opener': <function open at 0x000001B75CFE8B80>,
+ 'gzip_opener': <function open at 0x000001B75CFEA290>,
+ 'pprint': <function pprint at 0x000001B75CB1A560>}
+>>>
+
+```
