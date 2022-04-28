@@ -2,7 +2,8 @@
 
 ## importing the directories when a package is distributed over many directories
 
-![demo_reader_spread_out_in_multiple_dirs](C:\Rajdeep_Mukherjee\PluralSight_Python\2_PS_Core-python-organizing-larger-programs\04\demo_reader_spread_out_in_multiple_dirs.PNG)
+![demo_reader_spread_out_in_multiple_dirs](https://user-images.githubusercontent.com/43293317/165687450-11dc62e3-dfdd-4051-8dab-98272c99923a.PNG)
+
 
 Now we can see that the locals() has nothing as such
 ```python
@@ -43,7 +44,7 @@ _NamespacePath(['C:\\Rajdeep_Mukherjee\\PluralSight_Python\\2_PS_Core-python-org
 
 Now running the program with the already created text.bz2 file should work as a charm 
 
-![](C:\Rajdeep_Mukherjee\PluralSight_Python\2_PS_Core-python-organizing-larger-programs\04\source root.PNG)
+![source root](https://user-images.githubusercontent.com/43293317/165687494-824afeb1-9360-4161-99eb-a9a8f6867ea9.PNG)
 
 Don't forget to set the multi-reader-program to `source root` to alleviate the error marked
 by pycharm.
