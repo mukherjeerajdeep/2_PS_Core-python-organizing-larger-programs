@@ -16,6 +16,7 @@ folder(03) : Without `__init__.py` file, neither a package or module
 The can be subpackage as well, which are folders
 ```    
 ## import the `os` and change the directory
+
 ```python
 import os
 os.getcwd()
@@ -26,13 +27,15 @@ os.chdir("C:\\Rajdeep_Mukherjee\\PluralSight_Python\\2. PS_Core-python-organizin
 
 ## Importing the module
 ## Remember that the `__init__` will be called only once
-```python
+
+```text
 import demo_reader
 __init__.py is called for the import!
 ```
 
 
 ## From the other directory the import will not work as that directory is not a package 
+
 ```python
 os.getcwd()
 'C:\\Rajdeep_Mukherjee\\PluralSight_Python\\2. PS_Core-python-organizing-larger-programs\\03'
@@ -40,6 +43,7 @@ os.getcwd()
 
 ## Change the directory back again to the folder 03.
 ## Even if the same directory path is given the import works only once
+
 ```python
 os.chdir("C:\\Rajdeep_Mukherjee\\PluralSight_Python\\2. PS_Core-python-organizing-larger-programs\\03")
 import demo_reader
@@ -176,65 +180,23 @@ want only to expose the methods/functions inside it not the whole module/package
 ```python
 from demo_reader.compressed import * 
 __init__.py is called for the import!
+ 
 pprint(locals())
 {'In': ['',
         "print('PyDev console: using IPython 8.1.1\\n')\n"
         '\n'
         "import sys; print('Python %s on %s' % (sys.version, sys.platform))\n"
         "sys.path.extend(['C:\\\\Rajdeep_Mukherjee\\\\PluralSight_Python\\\\2_PS_Core-python-organizing-larger-programs\\\\03', "
-        "'C:/Rajdeep_Mukherjee/PluralSight_Python/2_PS_Core-python-organizing-larger-programs/03'])",
-        'from pprint import pprint',
-        'pprint(local())',
-        'pprint(locals())',
-        'from demo_reader.compressed import * ',
-        'pprint(locals())'],
- 'Out': {},
- '_': '',
- '__': '',
- '___': '',
- '__builtin__': <module 'builtins' (built-in)>,
- '__builtins__': <module 'builtins' (built-in)>,
- '__doc__': 'Automatically created module for IPython interactive environment',
- '__loader__': None,
- '__name__': '__main__',
- '__package__': None,
- '__spec__': None,
- '_dh': [WindowsPath('C:/Rajdeep_Mukherjee/PluralSight_Python/2_PS_Core-python-organizing-larger-programs/03')],
- '_i': 'from demo_reader.compressed import * ',
- '_i1': "print('PyDev console: using IPython 8.1.1\\n')\n"
-        '\n'
-        "import sys; print('Python %s on %s' % (sys.version, sys.platform))\n"
-        "sys.path.extend(['C:\\\\Rajdeep_Mukherjee\\\\PluralSight_Python\\\\2_PS_Core-python-organizing-larger-programs\\\\03', "
-        "'C:/Rajdeep_Mukherjee/PluralSight_Python/2_PS_Core-python-organizing-larger-programs/03'])",
- '_i2': 'from pprint import pprint',
- '_i3': 'pprint(local())',
- '_i4': 'pprint(locals())',
- '_i5': 'from demo_reader.compressed import * ',
- '_i6': 'pprint(locals())',
- '_ih': ['',
-         "print('PyDev console: using IPython 8.1.1\\n')\n"
-         '\n'
-         "import sys; print('Python %s on %s' % (sys.version, sys.platform))\n"
-         "sys.path.extend(['C:\\\\Rajdeep_Mukherjee\\\\PluralSight_Python\\\\2_PS_Core-python-organizing-larger-programs\\\\03', "
-         "'C:/Rajdeep_Mukherjee/PluralSight_Python/2_PS_Core-python-organizing-larger-programs/03'])",
-         'from pprint import pprint',
-         'pprint(local())',
-         'pprint(locals())',
-         'from demo_reader.compressed import * ',
-         'pprint(locals())'],
- '_ii': 'pprint(locals())',
- '_iii': 'pprint(local())',
- '_oh': {},
+......
+......        
  'bz2_opener': <function open at 0x000001C2E05624D0>,
  'bzipped': <module 'demo_reader.compressed.bzipped' from 'C:\\Rajdeep_Mukherjee\\PluralSight_Python\\2_PS_Core-python-organizing-larger-programs\\03\\demo_reader\\compressed\\bzipped.py'>,`
  'exit': <IPython.core.autocall.ExitAutocall object at 0x000001C2E3A39390>,
  'get_ipython': <bound method InteractiveShell.get_ipython of <_pydev_bundle.pydev_ipython_console_011.PyDevTerminalInteractiveShell object at 0x000001C2E3A3A3B0>>,
  'gzip_opener': <function open at 0x000001C2E2746710>,
  'gzipped': <module 'demo_reader.compressed.gzipped' from 'C:\\Rajdeep_Mukherjee\\PluralSight_Python\\2_PS_Core-python-organizing-larger-programs\\03\\demo_reader\\compressed\\gzipped.py'>,`
- 'pprint': <function pprint at 0x000001C2E2A10160>,
- 'quit': <IPython.core.autocall.ExitAutocall object at 0x000001C2E3A39390>,
- 'sys': <module 'sys' (built-in)>}
-
+......
+......
 ```
 Here we can see that only the methods/functions are exposed locally. 
  `'bz2_opener': <function open at 0x000001B75CFE8B80>,
